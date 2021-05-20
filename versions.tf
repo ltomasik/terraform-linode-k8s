@@ -6,12 +6,12 @@ terraform {
     }
     linode = {
       source  = "linode/linode"
-      version = "~> 1.16.0"
+      version = "~> 1.18.0"
     }
     null = {
       source  = "hashicorp/null"
       version = "~> 3.0.0"
     }
   }
-  required_version = ">= 0.13"
+  required_version = ">= 0.15.3"
 }
