@@ -3,13 +3,23 @@ variable "ubuntu_version" {
   default     = "20.04"
 }
 
+variable "centos_version" {
+  description = "Centos version to install"
+  default     = "7"
+}
+
+variable "containerd_version" {
+  description = "Containerd version to install"
+  default     = "1.4.4"
+}
+
 variable "cni_version" {
   default     = "v0.8.7"
   description = "Container Network Plugin Version"
 }
 
 variable "k8s_version" {
-  default     = "v1.18.13"
+  default     = "v1.21.1"
   description = "Kubernetes version to install"
 }
 
@@ -24,7 +34,7 @@ variable "k8s_feature_gates" {
 }
 
 variable "region" {
-  default     = "eu-west"
+  default     = "eu-central"
   description = "Linode Region: us-central us-west us-southeast us-east eu-west ap-south eu-central ap-northeast ap-northeast-1a"
 }
 
@@ -44,7 +54,7 @@ variable "masters" {
 }
 
 variable "nodes" {
-  default     = 3
+  default     = 0
   description = "Number of worker nodes to provision"
 }
 
