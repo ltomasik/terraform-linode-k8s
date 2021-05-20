@@ -13,6 +13,11 @@ variable "node_type" {
   description = "Linode Instance type for nodes"
 }
 
+variable "agent_identity" {
+  default     = ""
+  description = "Agent identity for SSH connection"
+}
+
 variable "private_ip" {
   default     = true
   description = "Enables Linode Instance Private IP addresses"
@@ -62,6 +67,16 @@ variable "ubuntu_version" {
   validation {
     condition     = contains(["16.04", "18.04", "20.04"], var.ubuntu_version)
     error_message = "Ubuntu version must be one of supported: 16.04, 18.04, or 20.04."
+  }
+}
+
+variable "centos_version" {
+  description = "Centos version to install"
+  default     = "7"
+  
+  validation {
+    condition     = contains(["7", "8"], var.centos_version) 
+    error_message = "Centos must be one of supported: 7, 8"
   }
 }
 
