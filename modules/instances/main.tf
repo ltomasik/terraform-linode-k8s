@@ -6,6 +6,11 @@ locals {
     "18.04" : "linode/ubuntu18.04",
     "20.04" : "linode/ubuntu20.04",
   }
+  
+  centos_images = {
+    "7" : "linode/centos7",
+    "8" : "linode/centos8",
+  }
 }
 
 resource "linode_instance" "instance" {
@@ -17,7 +22,7 @@ resource "linode_instance" "instance" {
   private_ip = var.private_ip
 
   authorized_keys = [chomp(file(var.ssh_public_key))]
-  image           = local.ubuntu_images[var.ubuntu_version]
+  image           = local.centos_images[var.centos_version]
 
   provisioner "remote-exec" {
     inline = [
@@ -28,6 +33,7 @@ resource "linode_instance" "instance" {
       host    = self.ip_address
       user    = local.root_user
       timeout = "300s"
+      agent_identity = var.agent_identity
     }
   }
 
@@ -39,6 +45,7 @@ resource "linode_instance" "instance" {
       host    = self.ip_address
       user    = local.root_user
       timeout = "300s"
+      agent_identity = var.agent_identity
     }
   }
 
@@ -54,6 +61,7 @@ resource "linode_instance" "instance" {
       host    = self.ip_address
       user    = local.root_user
       timeout = "300s"
+      agent_identity = var.agent_identity
     }
   }
 }
